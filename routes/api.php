@@ -22,11 +22,11 @@ use App\Http\Controllers\FileController;
 //     return $request->user();
 // });
 Route::group(['middleware' => 'auth:sanctum'], function () {
-    Route::get("list/{id?}", [DeviceController::class, 'list']);
-    Route::post("add", [DeviceController::class, 'add']);
-    Route::put("update/{id}", [DeviceController::class, 'update']);
-    Route::delete("delete/{id}", [DeviceController::class, 'delete']);
-    Route::get("search/{name}", [DeviceController::class, 'search']);
+    Route::get("device/{id?}", [DeviceController::class, 'index']);
+    Route::post("device", [DeviceController::class, 'store']);
+    Route::put("device/update/{id}", [DeviceController::class, 'update']);
+    Route::delete("device/{id}", [DeviceController::class, 'destroy']);
+    Route::get("/device/search/{name}", [DeviceController::class, 'search']);
 
     Route::apiResource("member", MemberController::class);
 });

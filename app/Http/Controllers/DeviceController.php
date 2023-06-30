@@ -8,13 +8,13 @@ use Illuminate\Support\Facades\Validator;
 
 class DeviceController extends Controller
 {
-    function list($id = null)
+    function index($id = null)
     {
         // return Device::all();
         return $id ? Device::find($id) : Device::all();
     }
 
-    function add(Request $req)
+    function store(Request $req)
     {
         $validator = Validator::make($req->all(), [
             'id' => 'unique:devices',
@@ -60,7 +60,7 @@ class DeviceController extends Controller
         }
     }
 
-    function delete($id)
+    function destroy($id)
     {
         $device = Device::find($id);
         $result = $device->delete();
